@@ -20,7 +20,7 @@ class _WidgetShadeImageState extends State<WidgetShadeImage> {
       children: [
         CachedNetworkImage(
           height: widget.height,
-          width: widget.width,
+          width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
           imageUrl: widget.imageUrl != null
               ? widget.imageUrl!
