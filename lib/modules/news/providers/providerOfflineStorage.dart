@@ -33,20 +33,25 @@ class ProviderOfflineStorage extends ChangeNotifier {
 
   /// this method is used to get the offline storage data
   getData() {
-    List<News> list;
+    List<News>? list;
 
+    dynamic data;
     dynamic offlineData = sharedPreferences.get(HelperSession.IHelperObject);
-    dynamic data = jsonDecode(offlineData);
+    if (offlineData != null) {
+      data = jsonDecode(offlineData);
 
-    if (data['articles'].isNotEmpty) {
-      list = [];
-      data['articles'].forEach((v) {
-        list.add(News.fromJson(v));
-      });
-    } else {
-      list = [];
+      if (data['articles'].isNotEmpty) {
+        list = [];
+        data['articles'].forEach((v) {
+          list!.add(News.fromJson(v));
+        });
+      } else {
+        list = [];
+      }
     }
-    response = ModelNews(status: "ok", totalResults: 0, news: list);
+
+    response = ModelNews(
+        status: "ok", totalResults: 0, news: offlineData == null ? [] : list);
     notifyListeners();
   }
 }

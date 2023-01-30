@@ -83,7 +83,9 @@ class _ScreenNewsState extends State<ScreenNews> {
         );
       } else {
         return Center(
-          child: widgetText("No Article Found"),
+          child: widgetText("No Article Found",
+              textStyle: textStyle(
+                  textColor: HelperColor.colorTitle, fontSize: 14.sp)),
         );
       }
     } else if (response.status == "error") {
