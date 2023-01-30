@@ -41,7 +41,7 @@ class _ScreenNewsDetailState extends State<ScreenNewsDetail> {
                   widgetText(widget.item.title!,
                       maxLine: 4,
                       textStyle: textStyle(
-                          fontSize: 29.sp,
+                          fontSize: 22.sp,
                           textColor: HelperColor.colorTitle,
                           fontWeight: FontWeight.bold)),
                   Container(
@@ -56,24 +56,38 @@ class _ScreenNewsDetailState extends State<ScreenNewsDetail> {
                               maxLine: 2,
                               textStyle: textStyle(
                                 textColor: HelperColor.colorTitle,
-                                fontSize: 20.sp,
+                                fontSize: 16.sp,
                               )),
                         ),
                         widgetText(
                             "${HelperCore.dateFormat("yyyy/M/d", widget.item.publishedAt!)}",
                             textStyle: textStyle(
                                 textColor: HelperColor.colorTitle,
-                                fontSize: 20.sp))
+                                fontSize: 16.sp))
                       ],
                     ),
                   ),
                   widgetText(widget.item.content!,
                       maxLine: 7,
                       textStyle: textStyle(
-                          fontSize: 14.sp,
+                          fontSize: 11.sp,
                           textColor: HelperColor.colorHelperText))
                 ],
               ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              margin: EdgeInsets.only(
+                  left: size.width * 18 / 360, top: size.width * 40 / 360),
+              height: size.height * 20.7 / 360,
+              width: size.height * 20.7 / 360,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.black12),
+              child: const Icon(Icons.arrow_back),
             ),
           )
         ],

@@ -33,7 +33,7 @@ class _ScreenNewsState extends State<ScreenNews> {
             textStyle: textStyle(
                 textColor: HelperColor.colorWhite,
                 fontWeight: FontWeight.bold,
-                fontSize: 29.sp)),
+                fontSize: 22.sp)),
       ),
       body: Consumer<ProviderGetNews>(
         builder: (context, callback, child) {

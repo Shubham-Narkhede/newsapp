@@ -40,7 +40,6 @@ class _ScreenNewsListViewState extends State<ScreenNewsListView> {
 
   Widget listItem(Article item) {
     Size size = MediaQuery.of(context).size;
-
     return Container(
       decoration: BoxDecoration(boxShadow: const [
         BoxShadow(
@@ -71,7 +70,7 @@ class _ScreenNewsListViewState extends State<ScreenNewsListView> {
                 widgetText("${item.title}",
                     maxLine: 3,
                     textStyle: textStyle(
-                        textColor: HelperColor.colorTitle, fontSize: 20.sp)),
+                        textColor: HelperColor.colorTitle, fontSize: 16.sp)),
                 Container(
                   margin: EdgeInsets.only(top: size.width * 14 / 360),
                   child: Row(
@@ -81,7 +80,7 @@ class _ScreenNewsListViewState extends State<ScreenNewsListView> {
                             maxLine: 2,
                             textStyle: textStyle(
                                 textColor: HelperColor.colorHelperText,
-                                fontSize: 12.sp,
+                                fontSize: 9.sp,
                                 fontWeight: FontWeight.bold)),
                       ),
                       Expanded(
@@ -91,7 +90,7 @@ class _ScreenNewsListViewState extends State<ScreenNewsListView> {
                               "${HelperCore.dateFormat("yyyy/M/d", item.publishedAt!)}",
                               textStyle: textStyle(
                                   textColor: HelperColor.colorHelperText,
-                                  fontSize: 12.sp)),
+                                  fontSize: 9.sp)),
                         ),
                       ),
                     ],
