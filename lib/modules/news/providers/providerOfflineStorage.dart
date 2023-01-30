@@ -50,10 +50,11 @@ class ProviderOfflineStorage extends ChangeNotifier {
       } else {
         list = [];
       }
+    } else {
+      list = [];
     }
 
-    response = ModelNews(
-        status: "ok", totalResults: 0, news: offlineData == null ? null : list);
+    response = ModelNews(status: "ok", totalResults: 0, news: list);
     notifyListeners();
   }
 }

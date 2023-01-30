@@ -20,16 +20,12 @@ class ProviderGetNews extends ChangeNotifier {
 
     /// here we get response from the respository
     RepositoryNews.instance.getNewsList().then((value) async {
-      print(Provider.of<ProviderOfflineStorage>(context, listen: false)
-          .response
-          .news);
-
       /// now to store data in offline storage we are check first if the shared preference
       /// data is null then we immediatly add encoded json responce in shared preference
       if (Provider.of<ProviderOfflineStorage>(context, listen: false)
-              .response
-              .news ==
-          null) {
+          .response
+          .news!
+          .isEmpty) {
         Provider.of<ProviderOfflineStorage>(context, listen: false)
             .addData(value.body);
       }

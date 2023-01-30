@@ -90,7 +90,23 @@ class _ScreenNewsState extends State<ScreenNews> {
       }
     } else if (response.status == "error") {
       return Center(
-        child: widgetText("Some Error occurred"),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            widgetText("Please reload the screen",
+                textStyle: textStyle(
+                    textColor: HelperColor.colorTitle, fontSize: 14.sp)),
+            IconButton(
+                onPressed: () {
+                  Provider.of<ProviderGetNews>(context, listen: false)
+                      .getProductsList(context);
+                },
+                icon: Icon(
+                  Icons.arrow_circle_up,
+                  color: HelperColor.colorTitle,
+                ))
+          ],
+        ),
       );
     }
     return Center(
