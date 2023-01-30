@@ -8,6 +8,7 @@ import '../../../helper/helperCore.dart';
 import '../../../widget/widgetShadeImage.dart';
 import '../../newsDetails/screens/screenNewsDetail.dart';
 
+// ScreenNewsListView this class is created to show the listview of news items
 class ScreenNewsListView extends StatefulWidget {
   final ModelNews news;
   ScreenNewsListView({required this.news});
@@ -19,9 +20,9 @@ class _ScreenNewsListViewState extends State<ScreenNewsListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: widget.news.articles!.length,
+      itemCount: widget.news.news!.length,
       itemBuilder: (BuildContext context, int index) {
-        Article item = widget.news.articles![index];
+        News item = widget.news.news![index];
         return InkWell(
           onTap: () {
             Navigator.push(
@@ -38,7 +39,8 @@ class _ScreenNewsListViewState extends State<ScreenNewsListView> {
     );
   }
 
-  Widget listItem(Article item) {
+  /// this widget it used to show news item on listview
+  Widget listItem(News item) {
     Size size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(boxShadow: const [

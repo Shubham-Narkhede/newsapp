@@ -11,6 +11,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../widget/widgetText.dart';
 
+/// this ScreenNews class we have used to show the error, success, responce on UI
 class ScreenNews extends StatefulWidget {
   @override
   _ScreenNewsState createState() => _ScreenNewsState();
@@ -20,6 +21,8 @@ class _ScreenNewsState extends State<ScreenNews> {
   @override
   void initState() {
     super.initState();
+
+    /// firstly we call the providers
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<ProviderGetNews>(context, listen: false)
           .getProductsList(context);
@@ -41,6 +44,9 @@ class _ScreenNewsState extends State<ScreenNews> {
                   fontWeight: FontWeight.bold,
                   fontSize: 22.sp)),
         ),
+        // Here we are checking the internet connectivity on the screen
+        // if internet is available then we are showing the online data
+        // else we are showing offline data
         body: StreamBuilder(
             stream: Connectivity().onConnectivityChanged,
             builder: (context, AsyncSnapshot<ConnectivityResult> snapshot) {
@@ -51,6 +57,7 @@ class _ScreenNewsState extends State<ScreenNews> {
             }));
   }
 
+  // here we just created a small widget to check online offline data
   Widget onlineData() {
     return Consumer<ProviderGetNews>(
       builder: (context, callback, child) {
@@ -67,9 +74,10 @@ class _ScreenNewsState extends State<ScreenNews> {
     );
   }
 
+  // this widget is created to show the UI on the basis of state
   Widget widgetChild(ModelNews response) {
     if (response.status == "ok") {
-      if (response.articles!.isNotEmpty) {
+      if (response.news!.isNotEmpty) {
         return ScreenNewsListView(
           news: response,
         );

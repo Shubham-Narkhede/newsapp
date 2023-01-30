@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 
+/// this singleton class is used to pass the http client responce to the provider
 class RepositoryNews {
   RepositoryNews._();
   static final _instance = RepositoryNews._();

@@ -8,7 +8,7 @@ import '../../../helper/helperCore.dart';
 import '../../../widget/widgetShadeImage.dart';
 
 class ScreenNewsDetail extends StatefulWidget {
-  final Article item;
+  final News item;
   ScreenNewsDetail({required this.item});
   @override
   _ScreenNewsDetailState createState() => _ScreenNewsDetailState();

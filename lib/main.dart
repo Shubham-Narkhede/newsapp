@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    /// here first we define all the providers which we are using in the application
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(

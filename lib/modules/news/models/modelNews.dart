@@ -2,33 +2,33 @@ class ModelNews {
   ModelNews({
     this.status,
     this.totalResults,
-    this.articles,
+    this.news,
   });
 
   String? status;
   int? totalResults;
-  List<Article>? articles;
+  List<News>? news;
 
   factory ModelNews.fromJson(Map<String, dynamic> json) => ModelNews(
         status: json["status"],
         totalResults: json["totalResults"],
-        articles: json["articles"] == null
+        news: json["articles"] == null
             ? []
-            : List<Article>.from(
-                json["articles"]!.map((x) => Article.fromJson(x))),
+            : List<News>.from(
+                json["articles"]!.map((x) => News.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "totalResults": totalResults,
-        "articles": articles == null
+        "articles": news == null
             ? []
-            : List<dynamic>.from(articles!.map((x) => x.toJson())),
+            : List<dynamic>.from(news!.map((x) => x.toJson())),
       };
 }
 
-class Article {
-  Article({
+class News {
+  News({
     this.source,
     this.author,
     this.title,
@@ -48,7 +48,7 @@ class Article {
   DateTime? publishedAt;
   String? content;
 
-  factory Article.fromJson(Map<String, dynamic> json) => Article(
+  factory News.fromJson(Map<String, dynamic> json) => News(
         source: json["source"] == null ? null : Source.fromJson(json["source"]),
         author: json["author"],
         title: json["title"],

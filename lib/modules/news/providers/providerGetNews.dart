@@ -7,17 +7,24 @@ import 'package:provider/provider.dart';
 
 import '../repo/RepoGetNews.dart';
 
+/// this ProviderGetNews class we have created to get all the news data
 class ProviderGetNews extends ChangeNotifier {
-  ModelNews response = ModelNews(status: "", totalResults: 0, articles: null);
+  /// first we emit the null data
+  ModelNews response = ModelNews(status: "", totalResults: 0, news: null);
 
   ModelNews get getResponse => response;
 
+  /// This method works like data binding method
   getProductsList(BuildContext context) {
-    List<Article> list;
-    RepositoryNews.instance.getNewsList().then((value) async {
+    List<News> list;
+
+    /// here we get response from the respository
+    RepositoryNews.instance.getNewsList().then((value) {
+      /// now to store data in offline storage we are check first if the shared preference
+      /// data is null then we immediatly add encoded json responce in shared preference
       if (Provider.of<ProviderOfflineStorage>(context, listen: false)
               .response
-              .articles ==
+              .news ==
           null) {
         Provider.of<ProviderOfflineStorage>(context, listen: false)
             .addData(value.body);
@@ -27,17 +34,17 @@ class ProviderGetNews extends ChangeNotifier {
       if (data['articles'].isNotEmpty) {
         list = [];
         data['articles'].forEach((v) {
-          list.add(Article.fromJson(v));
+          list.add(News.fromJson(v));
         });
       } else {
         list = [];
       }
 
-      response =
-          ModelNews(status: "ok", totalResults: list.length, articles: list);
+      /// after successfully get the data we only emit the response with status
+      response = ModelNews(status: "ok", totalResults: list.length, news: list);
       notifyListeners();
     }).catchError((onError) {
-      response = ModelNews(status: "error", totalResults: 0, articles: null);
+      response = ModelNews(status: "error", totalResults: 0, news: null);
       notifyListeners();
     });
   }
