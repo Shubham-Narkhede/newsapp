@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news_app/helper/helperColor.dart';
 import 'package:news_app/modules/news/providers/providerGetNews.dart';
+import 'package:news_app/modules/news/providers/providerOfflineStorage.dart';
 import 'package:news_app/modules/news/screens/screenNewsListView.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
@@ -18,7 +19,10 @@ class _ScreenNewsState extends State<ScreenNews> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<ProviderGetNews>(context, listen: false).getProductsList();
+      Provider.of<ProviderGetNews>(context, listen: false)
+          .getProductsList(context);
+      Provider.of<ProviderOfflineStorage>(context, listen: false)
+          .initSharedPreferences();
     });
   }
 

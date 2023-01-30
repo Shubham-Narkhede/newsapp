@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/modules/news/providers/providerGetNews.dart';
+import 'package:news_app/modules/news/providers/providerOfflineStorage.dart';
 import 'package:provider/provider.dart';
 
 import 'modules/news/screens/screenNews.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(
             create: (context) => ProviderGetNews(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => ProviderOfflineStorage(),
           ),
         ],
         child: Sizer(builder: (context, orientation, deviceType) {

@@ -1,6 +1,9 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:news_app/modules/news/models/modelNews.dart';
+import 'package:news_app/modules/news/providers/providerOfflineStorage.dart';
+import 'package:provider/provider.dart';
 
 import '../repo/RepoGetNews.dart';
 
@@ -9,9 +12,16 @@ class ProviderGetNews extends ChangeNotifier {
 
   ModelNews get getResponse => response;
 
-  getProductsList() {
+  getProductsList(BuildContext context) {
     List<Article> list;
-    RepositoryNews.instance.getNewsList().then((value) {
+    RepositoryNews.instance.getNewsList().then((value) async {
+      if (Provider.of<ProviderOfflineStorage>(context, listen: false)
+              .response
+              .articles ==
+          null) {
+        Provider.of<ProviderOfflineStorage>(context, listen: false)
+            .addData(value.body);
+      }
       final data = json.decode(value.body);
 
       if (data['articles'].isNotEmpty) {
