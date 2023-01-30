@@ -7,6 +7,7 @@ import '../../../helper/helperColor.dart';
 import '../../../helper/helperCore.dart';
 import '../../../widget/widgetShadeImage.dart';
 
+// ScreenNewsDetail this class is used to show the news information in detail format
 class ScreenNewsDetail extends StatefulWidget {
   final News item;
   ScreenNewsDetail({required this.item});
