@@ -27,6 +27,7 @@ class ProviderOfflineStorage extends ChangeNotifier {
   /// this method is created to add data in shared preference
   addData(dynamic value) {
     sharedPreferences.setString(HelperSession.IHelperObject, value);
+
     getData();
     notifyListeners();
   }
@@ -36,7 +37,8 @@ class ProviderOfflineStorage extends ChangeNotifier {
     List<News>? list;
 
     dynamic data;
-    dynamic offlineData = sharedPreferences.get(HelperSession.IHelperObject);
+    dynamic offlineData =
+        sharedPreferences.getString(HelperSession.IHelperObject);
     if (offlineData != null) {
       data = jsonDecode(offlineData);
 
@@ -51,7 +53,7 @@ class ProviderOfflineStorage extends ChangeNotifier {
     }
 
     response = ModelNews(
-        status: "ok", totalResults: 0, news: offlineData == null ? [] : list);
+        status: "ok", totalResults: 0, news: offlineData == null ? null : list);
     notifyListeners();
   }
 }
