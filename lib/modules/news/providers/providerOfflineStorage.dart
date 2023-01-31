@@ -9,7 +9,7 @@ import '../models/modelNews.dart';
 
 // ProviderOfflineStorage this class is created to get the data when there is not internet connection available
 class ProviderOfflineStorage extends ChangeNotifier {
-  ModelNews response = ModelNews(status: "", totalResults: 0, news: null);
+  ModelNews response = ModelNews(status: "", totalResults: 0, news: []);
 
   ModelNews get getResponse => response;
 
