@@ -45,7 +45,7 @@ class _WidgetShadeImageState extends State<WidgetShadeImage> {
                   end: FractionalOffset.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black,
+                    Colors.black87,
                   ],
                   stops: [
                     0.0,
