@@ -63,6 +63,7 @@ class _ScreenNewsListViewState extends State<ScreenNewsListView> {
                   tag: "Image ${item.title}",
                   child: WidgetShadeImage(
                     imageUrl: item.urlToImage,
+                    color: Colors.black87,
                   ))),
           Container(
             margin: EdgeInsets.only(

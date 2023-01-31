@@ -7,7 +7,12 @@ import '../helper/helperColor.dart';
 class WidgetShadeImage extends StatefulWidget {
   final double height, width;
   final String? imageUrl;
-  WidgetShadeImage({this.height = 230, this.width = 230, this.imageUrl});
+  final Color color;
+  WidgetShadeImage(
+      {this.height = 230,
+      this.width = 230,
+      this.imageUrl,
+      required this.color});
 
   @override
   _WidgetShadeImageState createState() => _WidgetShadeImageState();
@@ -38,14 +43,14 @@ class _WidgetShadeImageState extends State<WidgetShadeImage> {
         ),
         Container(
           height: widget.height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               color: Colors.white,
               gradient: LinearGradient(
                   begin: FractionalOffset.topCenter,
                   end: FractionalOffset.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Colors.black87,
+                    widget.color,
                   ],
                   stops: [
                     0.0,

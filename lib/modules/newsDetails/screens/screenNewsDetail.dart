@@ -28,6 +28,7 @@ class _ScreenNewsDetailState extends State<ScreenNewsDetail> {
                 imageUrl: widget.item.urlToImage,
                 height: size.height,
                 width: size.width,
+                color: Colors.black,
               )),
           Align(
             alignment: Alignment.bottomCenter,
