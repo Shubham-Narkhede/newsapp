@@ -88,7 +88,10 @@ class _ScreenNewsDetailState extends State<ScreenNewsDetail> {
               width: size.height * 20.7 / 360,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.black12),
-              child: const Icon(Icons.arrow_back),
+              child: Icon(
+                Icons.arrow_back,
+                color: HelperColor.colorWhite,
+              ),
             ),
           )
         ],
